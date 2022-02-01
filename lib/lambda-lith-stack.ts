@@ -15,5 +15,12 @@ export class LambdaLithStack extends Stack {
       code: lambda.Code.fromAsset("lambda"),
       handler: "main.handler",
     });
+
+    // =====================================================================
+    // Defines an API Gateway REST API with AWS Lambda proxy integration
+    // =====================================================================
+    const api = new apigateway.LambdaRestApi(this, "LithApi", {
+      handler: lambdaFunction,
+    });
   }
 }
